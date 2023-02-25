@@ -1,0 +1,48 @@
+@import "../../../../index.scss";
+
+.hero-bg{
+    background-color: $dark-black;
+    height: 85vh;
+}
+
+.hero-content{
+    display: flex;
+    // border: $border-testing;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+.hero-details{
+
+
+     
+    font: {
+        family: Roboto;
+        size: 3.5rem;
+    }
+    p{
+        color: white;
+        line-height: 4.5rem;
+        .hero-details-desc{
+            line-height: 1.75rem;
+            padding-top: 2rem;
+            font: {
+                size: 1.5rem;
+                weight: 100px;
+                
+            }
+        }
+
+        margin: {
+            left: 50px;
+        }
+        width: 70%;
+
+        strong{
+            background-color:$dark-blue;
+            padding: 3px;
+        }
+
+
+    }
+}

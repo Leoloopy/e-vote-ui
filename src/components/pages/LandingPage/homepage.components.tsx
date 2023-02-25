@@ -1,4 +1,5 @@
-
+import Header from "./header/header.components";
+import Hero from "./hero/hero.components";
 
 const HomePage = () => {
 
@@ -6,7 +7,8 @@ const HomePage = () => {
     return (
         <>
         <div>
-            "hi"
+            <Header />
+            <Hero />
         </div>
         </>
     )
