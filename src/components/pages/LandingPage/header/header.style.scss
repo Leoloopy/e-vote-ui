@@ -1,0 +1,39 @@
+@import "../../../../index.scss";
+@import "../../../reusables/background.style.scss";
+
+.header{
+    background-color:$dark-black;
+    display:flex;
+    column-gap: 20%;
+    color: white;
+    padding:10px;
+    align-items: center;
+    justify-content: center;
+    
+
+    font: {
+        family : Roboto;
+    }
+
+    ul{
+        display: flex;
+        
+        li{
+            list-style: none;
+            margin: 0px 15px auto;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    }
+
+     .nav-2{
+        li {
+                &:hover{
+                    background-color: $darker-blue;
+                    transition: 0.33s ease;
+                }
+            }
+        }
+}
+
+
