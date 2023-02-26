@@ -1,0 +1,39 @@
+@import "../../../index.scss";
+
+.login{
+    background-color: $dark-black;
+    padding: 3% 0%;
+}
+.login_container{
+    color:$white;
+    width:70%;
+    margin:0% auto;
+    box-sizing: border-box;
+}
+.login_form{
+    width:50%;
+    margin:0 auto;
+    padding:3% 0% 5% 5%;
+    box-sizing: border-box;
+    h3{
+        text-align: center;
+    }
+    input{
+       display:block;
+       width:88%;
+       padding:3% 0% 3% 2%;
+       margin:1% 0% 4% 0%;
+       border: none;
+    }
+    p{
+        text-align: right;
+        margin:4% 10% 4% 0%;
+    }
+    button{
+        width: 90%;
+        padding:3%;
+        border:none;
+        background-color:$dark-blue;
+        color:$white;
+    }
+}
