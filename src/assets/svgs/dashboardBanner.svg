@@ -1,0 +1,9 @@
+<svg width="100%" height="100%" id="svg" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg" 
+class="transition duration-300 ease-in-out delay-150">
+<path d="M 0,700 C 0,700 0,350 0,350 C 257,332 514,314 754,314 C 994,314 1217,332 1440,350 C 1440,350 1440,700 1440,700 Z" 
+stroke="none" stroke-width="0" fill="#1d3ade" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-0" 
+transform="rotate(-180 720 350)">
+</path>
+</svg>
+
+<!-- <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><path d="M 0,400 C 0,400 0,133 0,133 C 152.40000000000003,120.86666666666667 304.80000000000007,108.73333333333333 468,105 C 631.1999999999999,101.26666666666667 805.2,105.93333333333334 969,112 C 1132.8,118.06666666666666 1286.4,125.53333333333333 1440,133 C 1440,133 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="#1d3ade" fill-opacity="0.53" class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 200)"></path><path d="M 0,400 C 0,400 0,266 0,266 C 145.59999999999997,270.8 291.19999999999993,275.6 440,271 C 588.8000000000001,266.4 740.8,252.4 908,250 C 1075.2,247.6 1257.6,256.8 1440,266 C 1440,266 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="#1d3ade" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-1" transform="rotate(-180 720 200)"></path></svg> -->

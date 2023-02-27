@@ -3,7 +3,47 @@
 $dark-blue:#1d3ade;
 $darker-blue:#0a1d85;
 $dark-black:#000;
-
+$container-height: 100vh;
 $white:#fff;
+$border-testing: 3px solid green;
 
-$border-testing: 1px solid yellow;
+*{
+    font-family: Roboto;
+}
+
+@mixin removeDefault{
+    margin: 0;
+    padding: 0;
+}
+
+@mixin profile-pics{
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+    background-color: white;
+    margin-top:1rem;
+    margin-left:5rem;
+}
+
+@mixin twoColumnDisplay($height, $width, $padding: 10px) {
+    height: $height;
+    min-width: $width;
+    padding: $padding ;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lightblue;
+        transition: 0.33s ease;
+    }
+}
+
+@mixin bgColor-bRadius($color, $radius){
+    background-color: $color;
+    border-radius: $radius;
+}
+
+@mixin displayJustify($display, $justify){
+    display:$display;
+    justify-content: $justify;
+}
+
