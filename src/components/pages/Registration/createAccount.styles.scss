@@ -2,7 +2,7 @@
 
 .register{
     background-color: $dark-black;
-    padding: 2.5% 0%;
+    padding: 2% 0%;
 }
 .register_container{
     color:$white;
@@ -16,7 +16,7 @@
 .register_form{
     width:50%;
     margin:0 auto;
-    padding:2% 0% 5% 5%;
+    padding:2% 0% 2% 5%;
     box-sizing: border-box;
     h3{
         text-align: center;
@@ -28,7 +28,7 @@
        display:block;
        width:88%;
        padding:3% 0% 3% 2%;
-       margin:4% 0% 4% 0%;
+       margin:3% 0% 4% 0%;
        border: none;
     }
     select{
@@ -42,5 +42,6 @@
         border:none;
         background-color:$dark-blue;
         color:$white;
+        font-weight: bold;
     }
 }
