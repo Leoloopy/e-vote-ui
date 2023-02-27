@@ -3,6 +3,7 @@ import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './components/pages/LandingPage/homepage.components';
 import Login from './components/pages/LogInPage/logIn.component';
+import CreateAccount from './components/pages/Registration/createAccount.components';
 import "./App.scss";
 
 
@@ -11,7 +12,8 @@ function App() {
     <div className="App">
     <Routes>
       <Route path='/home' element={<HomePage />} />
-      <Route path='login' element={<Login/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/createAccount'element={<CreateAccount/>}/>
     </Routes>
     </div>
   );

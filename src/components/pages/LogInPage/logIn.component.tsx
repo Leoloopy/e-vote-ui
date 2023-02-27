@@ -1,6 +1,8 @@
+import "./logIn.style.scss";
 import Lottie from "react-lottie";
 import blackBallot from '../../../assets/lotties/blackBallot.json';
-import "./logIn.style.scss";
+import { NavLink } from "react-router-dom";
+
 
 
 const LogIn = () => {
@@ -32,7 +34,7 @@ const LogIn = () => {
                         <input type="password" placeholder="peterObi"/>
                         <p>Forget Password</p>
                         <button>Log In</button>
-                        <p>Don't have an account? SIGN UP</p>
+                        <p>Don't have an account? <NavLink to="/createAccount" style={{color:"white", textDecoration:"none", fontWeight:"bold"}}><span>SIGN UP</span></NavLink></p>
                     </form>
                 </div>
             </div>       
