@@ -6,19 +6,21 @@
     display:flex;
     column-gap: 20%;
     color: white;
-    padding:10px;
+    padding:30px 0px;
     align-items: center;
     justify-content: center;
-    
 
-    font: {
-        family : Roboto;
+    h3{
+        font-weight: bold;
+        font-size: 12px;
     }
-
+    
     ul{
         display: flex;
         
         li{
+            font-size: 12px;
+            font-weight: bold;
             list-style: none;
             margin: 0px 15px auto;
             text-transform: uppercase;
@@ -32,6 +34,10 @@
                     background-color: $darker-blue;
                     transition: 0.33s ease;
                 }
+            }
+            a{
+                text-decoration: none;
+                color: $white;
             }
         }
 }

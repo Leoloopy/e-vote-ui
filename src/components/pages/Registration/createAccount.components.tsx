@@ -1,25 +1,32 @@
 import "./createAccount.styles.scss";
+// import { useState } from "react";
+import { motion } from "framer-motion";
 const CreateAccount = () => {
-
     return(
         <>
-            <div className="register">
+            <motion.div 
+            className="register"
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                exit={{opacity:0}}
+                transition={{duration:1}}
+            >
                 <div className="register_container">
                     <h1>Create Account</h1>
                     <form className="register_form">
 
-                        <input type="file" accept="image/*" multiple = {false} />
+                        <input type="file"  accept="image/*" multiple = {false} required/>
 
-                        <input type="text" placeholder="First Name"/>
+                        <input type="text" placeholder="First Name" required/>
                         
-                        <input type="text" placeholder="Last Name"/>
+                        <input type="text" placeholder="Last Name" required/>
                         
-                        <input type="text" placeholder="+234 7053642897"/>
+                        <input type="text" placeholder="+234 7053642897" required/>
                         
-                        <input type="password" placeholder="peterObi"/>
+                        <input type="password" placeholder="peterObi" required/>
                         
-                        <input type="text" placeholder="VoteWise.ng"/>
-                        <select>
+                        <input type="text" placeholder="VoteWise.ng" required/>
+                        <select required>
                             <option>Marketing</option>
                             <option>IT</option>
                             <option>Networking</option>
@@ -29,7 +36,7 @@ const CreateAccount = () => {
                         <button>Create Account</button>
                     </form>
                 </div>
-            </div>       
+            </motion.div>       
         </>
     )
 

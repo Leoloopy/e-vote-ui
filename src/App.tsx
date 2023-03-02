@@ -11,12 +11,12 @@ import "./App.scss";
 function App() {
   return (
     <div className="App">
-    <Routes>
-      <Route path='/home' element={<HomePage />} />
-      <Route path='/dashboard-home' element={<DashBoard />} />
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/createAccount'element={<CreateAccount/>}/>
-    </Routes>
+        <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/dashboard-home' element={<DashBoard />} />
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/createAccount'element={<CreateAccount/>}/>
+        </Routes>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import "./logIn.style.scss";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react-web";
 import blackBallot from '../../../assets/lotties/blackBallot.json';
-import { NavLink } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 
 const LogIn = () => {
@@ -17,7 +17,13 @@ const LogIn = () => {
       };
     return(
         <>
-            <div className="login">
+            <motion.div 
+                className="login"
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                exit={{opacity:0}}
+                transition={{duration:1}}
+                >
                 <div className="login_container">
                     <Lottie 
                         options={defaultOptions}
@@ -29,15 +35,15 @@ const LogIn = () => {
                     />
                     <form className="login_form">
                         <label>Email Address</label>
-                        <input type="email" placeholder="acha@gmail.com"/>
+                        <input type="email" placeholder="acha@gmail.com" required/>
                         <label>Password</label>
-                        <input type="password" placeholder="peterObi"/>
+                        <input type="password" placeholder="peterObi" required/>
                         <p>Forget Password</p>
                         <button>Log In</button>
-                        <p>Don't have an account? <NavLink to="/createAccount" style={{color:"white", textDecoration:"none", fontWeight:"bold"}}><span>SIGN UP</span></NavLink></p>
+                        <p>Don't have an account? <Link to="/createAccount" style={{color:"white", textDecoration:"none", fontWeight:"bold"}}><span>SIGN UP</span></Link></p>
                     </form>
                 </div>
-            </div>       
+            </motion.div>       
         </>
     )
 }
