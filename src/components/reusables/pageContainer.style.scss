@@ -1,0 +1,9 @@
+@import "../../index.scss";
+
+.container{
+    border: $border-testing;
+    height: $container-height - 2;
+    margin: 5px 2px auto;
+    background-color: $dark-black;
+    color: white;
+}

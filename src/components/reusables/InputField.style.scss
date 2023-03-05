@@ -1,0 +1,25 @@
+@import "../../index.scss";
+
+.inputField {
+    padding: 15px;
+    margin: 5px 2px auto;
+    color: black;
+    outline: none;
+
+    &:hover{
+        border: {
+            left: 15px solid blue;
+            top: 2px solid blue;
+            right: 2px solid blue;
+            bottom: 2px solid blue;
+        }
+         transition: 0.20s ease-out;
+         
+    }
+
+    // &::after{
+    //     content:"3456";
+    // }
+    
+}
+

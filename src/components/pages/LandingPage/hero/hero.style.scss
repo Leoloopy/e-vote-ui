@@ -7,15 +7,12 @@
 
 .hero-content{
     display: flex;
-    // border: $border-testing;
     justify-content: center;
     column-gap: 30px;
 }
 
 .hero-details{
-
-
-     
+    padding: 5rem 0px 0px 3rem;     
     font: {
         family: Roboto;
         size: 3.5rem;

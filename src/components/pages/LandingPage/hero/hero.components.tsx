@@ -12,9 +12,9 @@ const Hero = () => {
               <p>
                 Make your own polling and share easily with{" "}
                 <strong>Semicolon Votes</strong>
-                <div className="hero-details-desc">Share your polling and receive your polling,
-                    its's totally free for all and you can pay to get
-                    pay to get more feature.
+                <div className="hero-details-desc">Share your polling and receive your result,
+                    it's totally free for all and you can pay to get
+                     more feature.
                 </div>
               </p>
             </div>

@@ -48,7 +48,15 @@ $border-testing: 3px solid green;
 }
 
 $border-testing: 1px solid $dark-blue;
+
 *{
     font-family: 'Poppins';
+}
+
+@mixin arrowBack {
+    color: white;
+    font: {
+        size: 3rem
+    }
 }
 

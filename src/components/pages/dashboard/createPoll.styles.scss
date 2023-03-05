@@ -1,0 +1,96 @@
+@import "../../../index.scss";
+@import "../../../components/reusables/InputField.style.scss";
+@import "../../reusables/InputField.style.scss";
+
+.arrowBack {
+    @include arrowBack;
+}
+.profile-image{
+    @include profile-pics;
+    margin-top:0;
+}
+
+.poll-header{
+    @include displayJustify(flex, space-between);
+    padding: 10px;
+    margin: 5px 2px auto;
+    align-items: center;
+    p{
+        font-size: 1.5rem;
+    }
+}
+
+.poll-body{
+    border: $border-testing;
+    border-radius:10px;
+    margin: 0 20% auto;
+    border-radius:10px;
+    height: 70%;
+    margin-top: 30px;
+    padding: 15px;
+
+    p{ 
+        margin: {
+            bottom:20px;
+            left: 20px;
+        }
+        font-size:1.5rem;
+        text-align: center;
+    }
+}
+
+.poll-time{
+   @include displayJustify(flex, flex-start);
+   align-items: center;
+    .fieldLabel {
+        padding-top:0;
+        margin-left: 2.5px;
+        text-align: left;
+
+        &::after{
+            content:"tfwytw";
+
+        }
+    }
+}
+
+   .fieldLabel {
+        padding-top:0;
+        margin-left: 2.5px;
+    }
+
+.plus-circle {
+    color:white;
+    font-size: 2rem;
+    margin: {
+        top:10px;
+        left: 10px;
+    }
+
+    &:hover {
+        color:lightblue;
+        cursor: pointer;
+    }
+}
+
+.options-btn{
+    display: inline;
+}
+
+.add-poll {
+  padding: 15px;
+  margin: 5px 2px auto;
+  color: black;
+  outline: none;
+  width: 8%;
+  border-radius:20px;
+}
+
+.delete-btn{
+    background-color:red;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 15px;
+    display: inline;
+}
