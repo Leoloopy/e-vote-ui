@@ -1,45 +1,45 @@
 @import "../../../../index.scss";
 
 .hero-bg{
+    padding:1.6% 0%;
     background-color: $dark-black;
-    height: 85vh;
 }
 
 .hero-content{
     display: flex;
+    align-items: center;
     justify-content: center;
     column-gap: 30px;
+
+    .sideImg{
+        width:50%;
+        img{
+            width:100%;
+        }
+    }
 }
 
 .hero-details{
-    padding: 5rem 0px 0px 3rem;     
-    font: {
-        family: Roboto;
-        size: 3.5rem;
-    }
+    width: 80%;
     p{
         color: white;
-        line-height: 4.5rem;
-        .hero-details-desc{
-            line-height: 1.75rem;
-            padding-top: 2rem;
-            font: {
-                size: 1.5rem;
-                weight: 100px;
-                
-            }
-        }
-
+        font-size: 50px;
+        font-weight: bold;
+        line-height: 60px;
         margin: {
-            left: 50px;
+            left: 14%;
         }
         width: 70%;
-
-        strong{
-            background-color:$dark-blue;
-            padding: 3px;
-        }
-
-
+    }
+    .hero-details-desc{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    h1{
+        background-color:$dark-blue;
+        padding: 2% 0% 2% 2%;
+        margin:3% 0% 2% 14%;
+        width: 70%;
+        color:white;
     }
 }
