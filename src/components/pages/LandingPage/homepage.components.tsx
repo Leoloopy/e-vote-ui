@@ -1,5 +1,6 @@
 import Header from "./header/header.components";
 import Hero from "./hero/hero.components";
+import PageContainer from "../../reusables/pageContainer.component";
 
 const HomePage = () => {
 
@@ -7,8 +8,10 @@ const HomePage = () => {
     return (
         <>
         <div>
-            <Header />
-            <Hero />
+            <PageContainer>
+                    <Header />
+                    <Hero />
+            </PageContainer>
         </div>
         </>
     )

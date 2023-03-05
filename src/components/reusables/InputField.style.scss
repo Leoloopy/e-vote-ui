@@ -1,0 +1,21 @@
+@import "../../index.scss";
+
+.inputField {
+    padding: 15px;
+    margin: 5px 2px auto;
+    color: black;
+    outline: none;
+    width: 96%;
+
+    &:focus{
+        border: {
+            left: 15px solid blue;
+            top: 2px solid blue;
+            right: 2px solid blue;
+            bottom: 2px solid blue;
+        }
+         transition: 0.20s ease-out;
+         
+    }    
+}
+
