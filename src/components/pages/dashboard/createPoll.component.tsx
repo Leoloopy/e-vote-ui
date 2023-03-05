@@ -12,11 +12,36 @@ type PollNumber = {
   name:string;
 }
 
+type candidatesOptions = {
+name: string,
+}
+
+type PollData = {
+  title: string,
+  question: string,
+  startDateTime: string,
+  endDateTime: string,
+  category: string,
+  candidates:candidatesOptions[];
+}
+
 const CreatePoll = () => {
 
     const [inputField, setInputField] = useState<number>(0);
-    const [newInputField, setNewInputField] = useState<PollNumber[]>([]);
-    console.log(newInputField);      
+    const [newInputField, setNewInputField] = useState<PollNumber[]>([]);  
+
+    const [createPollData, setCreatePollData] = useState<PollData>({
+      title:"",
+      question:"",
+      startDateTime:"",
+      endDateTime:"",
+      category:"",
+      candidates:[],
+    })
+
+    const [pollOptions, setPollOptions] = useState<candidatesOptions[]>([]);
+
+    
 
     const handleAddField = (event: MouseEvent<Element>): void => {
       event.preventDefault();
@@ -24,19 +49,49 @@ const CreatePoll = () => {
       setNewInputField([...newInputField, { id: inputField, name: "text"+inputField }]);
     }
 
-    const handleDelete = (event: MouseEvent<Element>) => {
+    const handleDelete = (event: MouseEvent<Element>):void => {
       event.preventDefault();
       const targetId: string = (event.target as HTMLElement).id;
-      console.log(targetId);   
       setNewInputField(prevInputFields => prevInputFields.filter(inputField => inputField.name !== targetId));
+      
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>):void => {
       e.preventDefault();
-      console.log(e.target.value);
+      const {name, value} = e.target;
+      setCreatePollData(prevData => { 
+       return {...prevData, [name]:value }})
     };
 
 
+    const handleOptionsChange = ():void => {
+      let elements:NodeListOf<HTMLInputElement> = document.querySelectorAll("input.add-poll");
+      for (let i = 0; i < elements.length; i++) {
+        // setPollOptions(prev => [...prev , {name: `${elements[i].value}`}]);
+        pollOptions.push({name: `${elements[i].value}`});
+      }  
+    }
+    
+    const handleSubmit = (event:MouseEvent<Element>) => {
+      event.preventDefault();
+
+      const startDate:string = createPollData.startDateTime.replace("T", " ")+":00";
+      const endDate:string = createPollData.endDateTime.replace("T", " ")+":00";
+      
+      const buildPollData = {
+        title: createPollData.title,
+        question: createPollData.question,
+        startDateTime: startDate,
+        endDateTime: endDate,
+        category: createPollData.category,
+        candidates: pollOptions,
+      };
+
+      console.log(buildPollData);
+      
+      console.log("submit");
+      handleOptionsChange()
+    }
 
 
     return (
@@ -52,29 +107,44 @@ const CreatePoll = () => {
             <form>
               <div className="poll-time">
                 <div className="fieldLabel">Start Time</div>
-                <InputField 
-                  id="date-1" width="50%" type="datetime-local"  name="datetime"  holder="Enter Poll Start Time"  handleChange={handleChange} />
+
+                <InputField value={createPollData.startDateTime}
+                  id="date-1"  type="datetime-local"  name="startDateTime"  holder="Enter Poll Start Time"  handleChange={handleChange} />
+
                 <div className="fieldLabel">End Time</div>
-                <InputField
-                  id="date-2" width="50%" type="datetime-local" name="datetime" holder="Enter Poll end Time"  handleChange={handleChange} />
+                <InputField value={createPollData.endDateTime}
+                  id="date-2"  type="datetime-local" name="endDateTime" holder="Enter Poll end Time"  handleChange={handleChange} />
+
               </div>
+
               <div className="fieldLabel">Poll Title</div>
-              <InputField
-                id="poll-title" width="96%" type="text"  name="poll title"  holder="Enter Poll Title" handleChange={handleChange} />
+              <InputField value={createPollData.title}
+                id="poll-title"  type="text"  name="title"  holder="Enter Poll Title" handleChange={handleChange} />
+
               <div className="fieldLabel">Poll Questions</div>
-              <InputField
-                id="poll-questions"  width="96%" type="text"  name="poll title" holder="Enter Poll Question" handleChange={handleChange} />
+              <InputField value={createPollData.question}
+                id="poll-questions"   type="text"  name="question" holder="Enter Poll Question" handleChange={handleChange} />
+
               <div className="poll-options">
                 <div className="fieldLabel">Add Poll Options</div>
+
                 {newInputField.map((item) => (
                     <div className="options-btn" key={item.id}>
-                      <input
-                        className="add-poll"  onChange={handleChange} placeholder="enter options" type="text" key={item.id} />
+                      <input name="candidates" className="add-poll"   placeholder="enter options" type="text" key={item.id} />
                       <IoIosRemoveCircle className="delete-btn" id={item.name} onClick={handleDelete} />
                     </div>
                 ))}
                 <AiFillPlusCircle  className="plus-circle" onClick={handleAddField} />
+                <div className="fieldLabel">Select your cohort</div>
+                <select  name="category"  value={createPollData.category}  onChange={handleChange} >
+                  <option value="cohort_I">cohort_I</option>
+                  <option value="cohort_II">cohort_II</option>
+                  <option value="cohort_III">cohort_III</option>
+                  <option value="cohort_IV">cohort_IV</option>
+                  <option value="cohort_V">cohort_V</option>
+                </select>
               </div>
+              <div className="submit" onClick={handleSubmit}>Submit</div>
             </form>
           </div>
         </PageContainer>

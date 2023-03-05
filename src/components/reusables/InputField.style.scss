@@ -5,8 +5,9 @@
     margin: 5px 2px auto;
     color: black;
     outline: none;
+    width: 96%;
 
-    &:hover{
+    &:focus{
         border: {
             left: 15px solid blue;
             top: 2px solid blue;
@@ -15,11 +16,6 @@
         }
          transition: 0.20s ease-out;
          
-    }
-
-    // &::after{
-    //     content:"3456";
-    // }
-    
+    }    
 }
 
