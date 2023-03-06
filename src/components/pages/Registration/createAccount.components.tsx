@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Modal from "../../reusables/Modal/Modal";
 import Axios from "axios";
+import PageContainer from "../../reusables/pageContainer.component";
 
 const CreateAccount = () => {
     const navigate = useNavigate();
@@ -73,7 +74,7 @@ const CreateAccount = () => {
 
     return(
         <>
-        <pageContainer>
+        <PageContainer>
             <motion.div 
             className="register"
                 initial={{opacity:0}}
@@ -120,7 +121,7 @@ const CreateAccount = () => {
                     {openModal && <Modal closeModal={exitModal}/>}
                 </div>
             </motion.div>  
-            </pageContainer>
+            </PageContainer>
         </>
     )
 }

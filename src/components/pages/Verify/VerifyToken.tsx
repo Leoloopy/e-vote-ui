@@ -5,6 +5,7 @@ import Lottie from "lottie-react-web";
 import tokenMotion from '../../../assets/lotties/token.json';
 import { useLocation, useNavigate} from "react-router-dom";
 import {Link} from "react-router-dom";
+import PageContainer from "../../reusables/pageContainer.component";
 
 const VerifyToken = () => {
   const location = useLocation();
@@ -57,42 +58,42 @@ const VerifyToken = () => {
   };
 
   return (
-    <motion.div 
-    className="verify"
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opacity:0}}
-    transition={{duration:1}}
-    >
-      <div>
-      <Lottie 
-          options={defaultOptions}
-          height={200}
-          width={200}
-      />
-        <h1>Verify Token</h1>
-        <form onSubmit={handleSubmit}>
-        {token.map((token, index) => {
-          return(
-            <div key={index} className="verify_input">
-              <input 
-                type="number" 
-                value={token} 
-                min="0" 
-                max="9" 
-                step="1" 
-                onChange={(e) => handleChange(index, e)}/>
-            </div>
-          )
-        })}
-        <button type="submit">Verify Token</button>
-        <Link to="/resendToken">
-          <p>RESEND TOKEN</p>
-        </Link>
-        </form>
-      </div>
-    </motion.div>
-  )
+    <PageContainer>
+      <motion.div
+        className="verify"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <div>
+          <Lottie options={defaultOptions} height={200} width={200} />
+          <h1>Verify Token</h1>
+          <form onSubmit={handleSubmit}>
+            {token.map((token, index) => {
+              return (
+                <div key={index} className="verify_input">
+                  <input
+                    type="number"
+                    value={token}
+                    min="0"
+                    max="9"
+                    step="1"
+                    onChange={(e) => handleChange(index, e)}
+                  />
+                </div>
+              );
+            })}
+            <button type="submit">Verify Token</button>
+            <Link to="/resendToken">
+              <p>RESEND TOKEN</p>
+            </Link>
+          </form>
+        </div>
+      </motion.div>
+      
+    </PageContainer>
+  );
 }
 
 export default VerifyToken;
