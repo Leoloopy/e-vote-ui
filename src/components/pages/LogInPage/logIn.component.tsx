@@ -1,11 +1,48 @@
 import "./logIn.style.scss";
+import { useState } from "react";
 import Lottie from "lottie-react-web";
 import blackBallot from '../../../assets/lotties/blackBallot.json';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 
 const LogIn = () => {
+    const navigate = useNavigate();
+    const loginData = {
+        "email" : "",
+        "password" : ""
+    }
+
+const [login, setLogin ] = useState(loginData);
+
+const handleChange = (e : any) => {
+    const {name, value } = e.target;
+    setLogin({
+        ...login,
+        [name] : value
+    })
+}
+
+const handleSubmit = async (e : any) => {
+    e.preventDefault();
+    try{
+    let fetchData =   await fetch("https://africa-smart.onrender.com/api/v1/user/login",{
+        method: "POST",
+        headers:{"content-type" : "application/json"},
+        body:JSON.stringify(login)
+    })
+
+    let fetchDataResponse = fetchData.json();
+    console.log(JSON.stringify(fetchDataResponse));
+    console.log("fetchDataResponse");
+  
+    const jwtToken = fetchDataResponse.then(data => console.log(data['data'].data))
+    
+    navigate("/dashboard-home", {state:{JWToken : jwtToken}})
+
+} catch(err){console.log(err)}
+    
+}
 
     const defaultOptions  = {
         loop: true,
@@ -30,20 +67,22 @@ const LogIn = () => {
                         height={200}
                         width={200}
                         style={{
-                            filter:"drop-shadow(0px 10px 10px #1d3ade)"
+                            filter:`drop-shadow(0px 10px 10px #1d3ade)`
                         }}
                     />
-                    <form className="login_form">
+                    <form className="login_form" onSubmit={handleSubmit}>
                         <label>Email Address</label>
-                        <input type="email" placeholder="acha@gmail.com" required/>
+                        <input type="email" name="email" value={login.email} onChange={handleChange} required/>
                         <label>Password</label>
-                        <input type="password" placeholder="peterObi" required/>
-                        <p>Forget Password</p>
-                        <button>Log In</button>
+                        <input type="password" name="password" value={login.password} onChange={handleChange} required/>
+                        <Link to="/resendToken">
+                            <p>Forget Password</p>
+                        </Link>
+                        <button type="submit">Log In</button>
                         <p>Don't have an account? <Link to="/createAccount" style={{color:"white", textDecoration:"none", fontWeight:"bold"}}><span>SIGN UP</span></Link></p>
                     </form>
                 </div>
-            </motion.div>       
+            </motion.div>  
         </>
     )
 }

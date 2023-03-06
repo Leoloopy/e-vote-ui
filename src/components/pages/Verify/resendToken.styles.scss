@@ -1,0 +1,21 @@
+@import "../../../index.scss";
+
+.resend_Token{
+    background-color: $dark-black;
+    padding:19.8% 0%;
+    text-align: center;
+    color:white;
+    input{
+        padding:13px 0% 13px 0.8%;
+        width:27% !important;
+    }
+    button{
+        width: 28%;
+        color:white;
+        font-weight: bold;
+        background-color: blue;
+        margin: 10px auto 0px auto;
+        display: block;
+        padding:13px 80px;
+    }
+}
