@@ -1,0 +1,41 @@
+@import"../../../index.scss";
+
+.verify{
+    background-color: $dark-black;
+    padding:7.6% 0% 13.9% 0%;
+    text-align: center;
+    .verify_input{
+        display: inline-block;
+    }
+    h1{
+        position: relative;
+        margin-top:-35px;
+        color:$white;
+        padding-bottom: 10px;
+        font-weight: bold;
+        z-index:1;
+    }
+    input{
+        width:30px;
+        padding:10px;
+        margin:0px 5px;
+    }
+    button{
+        background-color:$dark-blue;
+        margin:10px auto 0px auto;
+        display: block;
+        padding:13px 82px;
+        color:white;
+        font-weight: bold;
+        border:none;
+    }
+    P{
+        color:white;
+        font-weight:bold;
+        margin:0.5% 0% 0% 10.5%;
+        cursor: pointer;
+    }
+    a{
+        text-decoration: none;
+    }
+}

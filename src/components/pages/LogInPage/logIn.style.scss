@@ -28,6 +28,7 @@
     p{
         text-align: right;
         margin:0% 10% 4% 0%;
+        cursor: pointer;
     }
     button{
         width: 90%;
@@ -35,6 +36,11 @@
         border:none;
         background-color:$dark-blue;
         color:$white;
+        font-weight: bold;
+    }
+    a{
+        text-decoration: none;
+        color: white;
         font-weight: bold;
     }
 }
