@@ -4,6 +4,7 @@ import Lottie from "lottie-react-web";
 import blackBallot from '../../../assets/lotties/blackBallot.json';
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import PageContainer from "../../reusables/pageContainer.component";
 
 
 const LogIn = () => {
@@ -54,6 +55,7 @@ const handleSubmit = async (e : any) => {
       };
     return(
         <>
+         <PageContainer>
             <motion.div 
                 className="login"
                 initial={{opacity:0}}
@@ -82,7 +84,8 @@ const handleSubmit = async (e : any) => {
                         <p>Don't have an account? <Link to="/createAccount" style={{color:"white", textDecoration:"none", fontWeight:"bold"}}><span>SIGN UP</span></Link></p>
                     </form>
                 </div>
-            </motion.div>  
+            </motion.div> 
+             </PageContainer>
         </>
     )
 }

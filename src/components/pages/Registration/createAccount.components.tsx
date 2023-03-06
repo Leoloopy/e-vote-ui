@@ -73,6 +73,7 @@ const CreateAccount = () => {
 
     return(
         <>
+        <pageContainer>
             <motion.div 
             className="register"
                 initial={{opacity:0}}
@@ -118,7 +119,8 @@ const CreateAccount = () => {
                     </form>
                     {openModal && <Modal closeModal={exitModal}/>}
                 </div>
-            </motion.div>       
+            </motion.div>  
+            </pageContainer>
         </>
     )
 }

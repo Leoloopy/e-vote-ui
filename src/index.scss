@@ -48,7 +48,53 @@ $border-testing: 3px solid green;
 }
 
 $border-testing: 1px solid $dark-blue;
+
 *{
     font-family: 'Poppins';
 }
 
+@mixin arrowBack {
+    color: white;
+    font: {
+        size: 3rem
+    }
+}
+
+
+select {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border-radius: 2px;
+
+    &:hover{
+        background-color: lightblue;
+        color: #fff;
+    }
+
+    option {
+        background-color:white;
+        color: gray;
+        border: none;
+        outline: none;
+        border-radius:0px;
+    }
+
+
+}
+
+.submit{
+    background-color: $dark-black;
+    cursor:pointer;
+    margin-top: 30px;
+    padding: 10px;
+    border: 2px solid white;
+    text-align: center;
+
+    &:hover{
+        background-color:lightblue;
+        transition: 0.33s ease;
+        color: black;
+        border: none;
+    }
+}
