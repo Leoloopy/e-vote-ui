@@ -21,17 +21,16 @@
 }
 
 .poll-body{
-    border: $border-testing;
-    border-radius:10px;
+    border: 1px solid white;
     margin: 0 20% auto;
-    border-radius:10px;
-    height: 70%;
-    margin-top: 30px;
+    // border-radius:10px;
+    height: 65%;
+    margin-top: 3rem;
     padding: 15px;
 
     p{ 
         margin: {
-            bottom:20px;
+            bottom:10px;
             left: 20px;
         }
         font-size:1.5rem;

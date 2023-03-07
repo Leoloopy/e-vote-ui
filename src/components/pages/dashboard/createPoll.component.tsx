@@ -4,8 +4,14 @@ import InputField from "../../reusables/InputField.component";
 import {AiFillPlusCircle} from "react-icons/ai";
 import "./createPoll.styles.scss";
 import { MouseEvent } from "react";
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {IoIosRemoveCircle} from "react-icons/io";
+import DashboardHeader from "../../reusables/dashboard-header/dashboard-header";
+import { HeaderInfo } from "../../reusables/dashboard-header/dashboard-header";
+import {useLocation} from "react-router-dom";
+import axios from "axios";
+import { HeaderContext } from "../../../App";
+
 
 type PollNumber = {
   id:number;
@@ -13,7 +19,7 @@ type PollNumber = {
 }
 
 type candidatesOptions = {
-name: string,
+candidateName: string,
 }
 
 type PollData = {
@@ -27,8 +33,16 @@ type PollData = {
 
 const CreatePoll = () => {
 
+  const { headerInfo, setHeaderInfo } = useContext(HeaderContext);
+
+
+
     const [inputField, setInputField] = useState<number>(0);
     const [newInputField, setNewInputField] = useState<PollNumber[]>([]);  
+
+    const location = useLocation();
+    console.log(location.state);
+    
 
     const [createPollData, setCreatePollData] = useState<PollData>({
       title:"",
@@ -68,42 +82,54 @@ const CreatePoll = () => {
       let elements:NodeListOf<HTMLInputElement> = document.querySelectorAll("input.add-poll");
       for (let i = 0; i < elements.length; i++) {
         // setPollOptions(prev => [...prev , {name: `${elements[i].value}`}]);
-        pollOptions.push({name: `${elements[i].value}`});
+        pollOptions.push({candidateName: `${elements[i].value}`});
       }  
     }
+
+    const buildRegData = () => {
+       const startDate: string = createPollData.startDateTime.replace("T", " ") + ":00";
+       const endDate: string =  createPollData.endDateTime.replace("T", " ") + ":00";
+
+       handleOptionsChange();
+        const buildPollData = {
+          title: createPollData.title,
+          question: createPollData.question,
+          startDateTime: startDate,
+          endDateTime: endDate,
+          category: createPollData.category,
+          candidates: pollOptions,
+        };
+
+        return buildPollData;
+    }
     
-    const handleSubmit = (event:MouseEvent<Element>) => {
+    const handleSubmit = async (event:MouseEvent<Element>) => {
       event.preventDefault();
+      const getData = buildRegData();
+      console.log(getData);
 
-      const startDate:string = createPollData.startDateTime.replace("T", " ")+":00";
-      const endDate:string = createPollData.endDateTime.replace("T", " ")+":00";
-      
-      const buildPollData = {
-        title: createPollData.title,
-        question: createPollData.question,
-        startDateTime: startDate,
-        endDateTime: endDate,
-        category: createPollData.category,
-        candidates: pollOptions,
-      };
+      const headers = {
+        'Authorization': 'Bearer'
 
-      console.log(buildPollData);
+      }
       
+      
+    await axios
+      .post("https://africa-smart.onrender.com/api/v1/poll/create", getData, {headers})
+      .then((res) => console.log(res))
+      .then((err) => console.log(err));
+
       console.log("submit");
-      handleOptionsChange()
     }
 
 
     return (
       <>
         <PageContainer>
-          <div className="poll-header">
-            <IoIosArrowRoundBack className="arrowBack" />
-            <p>Create Poll</p>
-            <div className="profile-image"></div>
-          </div>
+          <DashboardHeader {...headerInfo}/>
+      
           <div className="poll-body">
-            <p>Fill out the fields below to create your poll</p>
+
             <form>
               <div className="poll-time">
                 <div className="fieldLabel">Start Time</div>
