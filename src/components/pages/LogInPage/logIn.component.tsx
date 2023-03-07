@@ -1,20 +1,27 @@
 import "./logIn.style.scss";
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
 import Lottie from "lottie-react-web";
 import blackBallot from '../../../assets/lotties/blackBallot.json';
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageContainer from "../../reusables/pageContainer.component";
+import { HeaderContext } from "../../../App";
+
 
 
 const LogIn = () => {
+
     const navigate = useNavigate();
+
     const loginData = {
         "email" : "",
         "password" : ""
     }
 
 const [login, setLogin ] = useState(loginData);
+
+const {headerInfo, setHeaderInfo} = useContext(HeaderContext);
+
 
 const handleChange = (e : any) => {
     const {name, value } = e.target;
@@ -34,12 +41,17 @@ const handleSubmit = async (e : any) => {
     })
 
     let fetchDataResponse = fetchData.json();
-    console.log(JSON.stringify(fetchDataResponse));
-    console.log("fetchDataResponse");
-  
-    const jwtToken = fetchDataResponse.then(data => console.log(data['data'].data))
+
+     fetchDataResponse.then((data) => { 
+         setHeaderInfo({...headerInfo, 
+            token: data["data"].data,
+            image: data["data"].imageURL,
+            username: data["data"].firstName,
+            cohortName:data["data"].category
+        });
+        navigate("/dashboard-home")
+     })
     
-    navigate("/dashboard-home", {state:{JWToken : jwtToken}})
 
 } catch(err){console.log(err)}
     

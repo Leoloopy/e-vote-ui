@@ -17,8 +17,9 @@ $border-testing: 3px solid green;
 }
 
 @mixin profile-pics{
-    width: 50px;
-    height: 50px;
+    max-width: 100px;
+    max-height: 100px;
+    overflow: hidden;
     border-radius:50%;
     background-color: white;
     margin-top:1rem;
@@ -27,7 +28,7 @@ $border-testing: 3px solid green;
 
 @mixin twoColumnDisplay($height, $width, $padding: 10px) {
     height: $height;
-    min-width: $width;
+    max-width: $width;
     padding: $padding ;
     cursor: pointer;
 
