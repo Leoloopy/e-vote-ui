@@ -13,6 +13,7 @@ const DashboardHeader = (props:HeaderInfo) => {
 
     return (
       <div className="dashboard-header">
+              <span className = "tkt">{props.token}</span>
               <div className="dashboard-title">
                 <div>
                   <h2>Semicolon Votes</h2>

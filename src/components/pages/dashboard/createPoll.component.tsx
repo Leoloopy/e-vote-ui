@@ -36,12 +36,9 @@ const CreatePoll = () => {
   const { headerInfo, setHeaderInfo } = useContext(HeaderContext);
 
 
-
     const [inputField, setInputField] = useState<number>(0);
     const [newInputField, setNewInputField] = useState<PollNumber[]>([]);  
 
-    const location = useLocation();
-    console.log(location.state);
     
 
     const [createPollData, setCreatePollData] = useState<PollData>({
@@ -108,19 +105,39 @@ const CreatePoll = () => {
       const getData = buildRegData();
       console.log(getData);
 
-      const headers = {
-        'Authorization': 'Bearer'
+      // const headers = {
+      //   'Authorization': `Bearer ${headerInfo.token}`,
+      //   'Content-Type': 'application/json'
+      // }
 
-      }
+      console.log(`Bearer ${headerInfo.token}`);
       
-      
-    await axios
-      .post("https://africa-smart.onrender.com/api/v1/poll/create", getData, {headers})
-      .then((res) => console.log(res))
-      .then((err) => console.log(err));
+      try{
+      let getFetchData = await fetch("https://africa-smart.onrender.com/api/v1/poll/create", {
+        'headers' :  { Authorization: `Bearer ${headerInfo.token}`,
+                      'Content-Type': 'application/json' }, 
+        method: 'POST',
+        body : JSON.stringify(getData)
+      })
 
-      console.log("submit");
+      let resData = getFetchData.json();
+      console.log(resData);
+    } catch(err){console.log(err);
     }
+      
+      // let data = resData;
+      // console.log(data);
+      
+      
+      
+    // await axios
+    //   .post("https://africa-smart.onrender.com/api/v1/poll/create", getData, {headers})
+    //   .then((res) => console.log(res))
+    //   .then((err) => console.log(err));
+
+    //   console.log("submit");
+    // }
+  }
 
 
     return (
@@ -179,8 +196,4 @@ const CreatePoll = () => {
     
 }
 
-
-
 export default CreatePoll;
-
-

@@ -3,7 +3,7 @@ import { FaVoteYea } from "react-icons/fa";
 import { GiVote } from "react-icons/gi";
 import { MdHowToVote } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import { HeaderInfo } from "../../reusables/dashboard-header/dashboard-header";
 import { useContext } from "react";
 import PageContainer from "../../reusables/pageContainer.component";
@@ -16,6 +16,10 @@ import { HeaderContext } from "../../../App";
 const DashBoard = () => {
 
   const { headerInfo, setHeaderInfo } = useContext(HeaderContext);
+  console.log(`consoling token ${headerInfo.token}`)
+  // const location = useLocation();
+  // console.log(location.state.token);
+  
 
 
     return (
