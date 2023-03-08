@@ -22,7 +22,6 @@ const [login, setLogin ] = useState(loginData);
 
 const {headerInfo, setHeaderInfo} = useContext(HeaderContext);
 
-
 const handleChange = (e : any) => {
     const {name, value } = e.target;
     setLogin({
@@ -44,10 +43,10 @@ const handleSubmit = async (e : any) => {
 
      fetchDataResponse.then((data) => { 
          setHeaderInfo({...headerInfo, 
-            token: data["data"].data,
             image: data["data"].imageURL,
             username: data["data"].firstName,
-            cohortName:data["data"].category
+            cohortName:data["data"].category,
+            token:data["data"].token
         });
         navigate("/dashboard-home")
      })

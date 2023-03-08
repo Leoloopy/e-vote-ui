@@ -19,10 +19,10 @@ export const HeaderContext = createContext<any>({});
 
 function App() {
   const [headerInfo, setHeaderInfo] = useState({
-    token:"",
     username: "",
     cohortName: "",
-    image: "",    
+    image: "",   
+    token:"" 
   });
   return (
     <HeaderContext.Provider value={{headerInfo, setHeaderInfo}}>
@@ -38,7 +38,7 @@ function App() {
           <Route path="/create-poll" element={<CreatePoll />} />
       </Routes>
     </div>
-        </HeaderContext.Provider>
+    </HeaderContext.Provider>
   );
 }
 
