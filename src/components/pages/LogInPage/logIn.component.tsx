@@ -5,6 +5,7 @@ import blackBallot from '../../../assets/lotties/blackBallot.json';
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageContainer from "../../reusables/pageContainer.component";
+import Axios from "axios";
 
 
 const LogIn = () => {
@@ -15,6 +16,7 @@ const LogIn = () => {
     }
 
 const [login, setLogin ] = useState(loginData);
+const [errors, setErrors] = useState<any>({});
 
 const handleChange = (e : any) => {
     const {name, value } = e.target;
@@ -26,24 +28,41 @@ const handleChange = (e : any) => {
 
 const handleSubmit = async (e : any) => {
     e.preventDefault();
-    try{
-    let fetchData =   await fetch("https://africa-smart.onrender.com/api/v1/user/login",{
-        method: "POST",
-        headers:{"content-type" : "application/json"},
-        body:JSON.stringify(login)
-    })
 
-    let fetchDataResponse = fetchData.json();
-    console.log(JSON.stringify(fetchDataResponse));
-    console.log("fetchDataResponse");
+    await Axios.post("https://africa-smart.onrender.com/api/v1/user/login",login)
+    .then(res => {
+        console.log(res)
+         const jwtToken = res.data.data.token
+         res.data.successful && navigate("/dashboard-home", {state:{JWToken : jwtToken}});
+         
+    }).catch(err => {
+        console.log(err)
+    }) 
   
-    const jwtToken = fetchDataResponse.then(data => console.log(data['data'].data))
-    
-    navigate("/dashboard-home", {state:{JWToken : jwtToken}})
-
-} catch(err){console.log(err)}
-    
+    setErrors(validate(login))
+    setLogin({
+        "email" : "",
+        "password" : ""
+    })    
 }
+
+const validate = (val : any) : any => {
+    let err : any = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+    if(!val.email){
+        err.email = "Email address is required!"
+    }else if(!regex.test(val.email)){
+        err.email = "This is not a valid email format"
+    }
+    if(!val.password){
+        err.password = "Password is required!"
+    }else if(val.password.length < 8){
+        err.password = "Password should be more than 8 characters"
+    }
+    return err;
+}
+
 
     const defaultOptions  = {
         loop: true,
@@ -53,6 +72,9 @@ const handleSubmit = async (e : any) => {
           preserveAspectRatio: "xMidYMid slice"
         }
       };
+
+
+
     return(
         <>
          <PageContainer>
@@ -75,8 +97,10 @@ const handleSubmit = async (e : any) => {
                     <form className="login_form" onSubmit={handleSubmit}>
                         <label>Email Address</label>
                         <input type="email" name="email" value={login.email} onChange={handleChange} required/>
+                        <p className="err">{errors.email}</p>
                         <label>Password</label>
                         <input type="password" name="password" value={login.password} onChange={handleChange} required/>
+                        <p className="err">{errors.password}</p>
                         <Link to="/resendToken">
                             <p>Forget Password</p>
                         </Link>
