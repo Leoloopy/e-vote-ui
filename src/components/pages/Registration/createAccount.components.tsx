@@ -175,17 +175,6 @@ const CreateAccount = () => {
                             <option>COHORT_III</option>
                             <option>COHORT_IV</option>
                             <option>COHORT_V</option>
-                            <option>COHORT_VI</option>
-                            <option>COHORT_VII</option>
-                            <option>COHORT_VIII</option>
-                            <option>COHORT_IX</option>
-                            <option>COHORT_X</option>
-                            <option>COHORT_XI</option>
-                            <option>COHORT_XII</option>
-                            <option>COHORT_XIII</option>
-                            <option>COHORT_XIV</option>
-                            <option>COHORT_XV</option>
-                            <option>COHORT_XVI</option>
                         </select>
                         <p>{errors.category}</p>
                         <button type="submit">Create Account</button>

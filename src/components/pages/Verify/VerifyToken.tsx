@@ -6,6 +6,7 @@ import tokenMotion from '../../../assets/lotties/token.json';
 import PageContainer from "../../reusables/pageContainer.component";
 import { useLocation, useNavigate} from "react-router-dom";
 import {Link} from "react-router-dom";
+import PageContainer from "../../reusables/pageContainer.component";
 
 const VerifyToken = () => {
   const location = useLocation();
@@ -92,6 +93,7 @@ const VerifyToken = () => {
                     onChange={(e) => handleChange(index, e)}/>
                 </div>
               )
+
             })}
             <button type="submit">Verify Token</button>
             <Link to="/resendToken">

@@ -10,22 +10,35 @@ import CreatePoll from './components/pages/dashboard/createPoll.component';
 import "./App.scss";
 import ResendToken from './components/pages/Verify/ResendToken';
 import ForgotPassword from './components/pages/ForgotPassword/ForgotPassword';
+import {useState, createContext} from "react";
+import { HeaderInfo } from './components/reusables/dashboard-header/dashboard-header';
+
+
+export const HeaderContext = createContext<any>({});
 
 
 function App() {
+  const [headerInfo, setHeaderInfo] = useState({
+    username: "",
+    cohortName: "",
+    image: "",   
+    token:"" 
+  });
   return (
+    <HeaderContext.Provider value={{headerInfo, setHeaderInfo}}>
     <div className="App">
-        <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/dashboard-home' element={<DashBoard />} />
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/createAccount'element={<CreateAccount/>}/>
-            <Route path='/verify'element={<VerifyToken/>}/>
-            <Route path='/resendToken'element={<ResendToken/>}/>
-            <Route path='/forgotPassword'element={<ForgotPassword/>}/>
-            <Route path='/create-poll'element={<CreatePoll/>}/>
-        </Routes>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+          <Route path="/dashboard-home" element={<DashBoard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/createAccount" element={<CreateAccount />} />
+          <Route path="/verify" element={<VerifyToken />} />
+          <Route path="/resendToken" element={<ResendToken />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/create-poll" element={<CreatePoll />} />
+      </Routes>
     </div>
+    </HeaderContext.Provider>
   );
 }
 

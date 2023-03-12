@@ -1,15 +1,19 @@
 import "./logIn.style.scss";
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
 import Lottie from "lottie-react-web";
 import blackBallot from '../../../assets/lotties/blackBallot.json';
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageContainer from "../../reusables/pageContainer.component";
 import Axios from "axios";
+import { HeaderContext } from "../../../App";
+
 
 
 const LogIn = () => {
+
     const navigate = useNavigate();
+
     const loginData = {
         "email" : "",
         "password" : ""
@@ -17,6 +21,8 @@ const LogIn = () => {
 
 const [login, setLogin ] = useState(loginData);
 const [errors, setErrors] = useState<any>({});
+
+const {headerInfo, setHeaderInfo} = useContext(HeaderContext);
 
 const handleChange = (e : any) => {
     const {name, value } = e.target;
@@ -49,7 +55,18 @@ const handleSubmit = async (e : any) => {
 const validate = (val : any) : any => {
     let err : any = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    let fetchDataResponse = fetchData.json();
 
+     fetchDataResponse.then((data) => { 
+         setHeaderInfo({...headerInfo, 
+            image: data["data"].imageURL,
+            username: data["data"].firstName,
+            cohortName:data["data"].category,
+            token:data["data"].token
+        });
+        navigate("/dashboard-home")
+     })
+    
     if(!val.email){
         err.email = "Email address is required!"
     }else if(!regex.test(val.email)){

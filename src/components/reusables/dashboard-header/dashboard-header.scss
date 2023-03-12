@@ -1,0 +1,48 @@
+@import "../../../index.scss";
+
+
+.dashboard-header{
+    @include bgColor-bRadius($dark-blue,0px 0px 0rem 0rem );
+    @include displayJustify(flex,space-between);
+    min-height: 8rem;
+    align-items: center;
+    padding: {
+        top: 5px;
+        right: 15rem;
+        bottom: 5px;
+        left: 15rem;
+
+    } 
+}
+
+.dashboard-title{
+
+    h2{
+        @include removeDefault;
+        font-size: 1.5rem;
+        color: lightblue;
+    }
+
+    p{
+        @include removeDefault;
+        font-size: 1.3rem;
+    }
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    
+
+    div{
+        @include removeDefault;
+    }
+}
+
+.profile-pics_small {
+    @include profile-pics;
+}
+.tkt{
+    display: none;
+ }
